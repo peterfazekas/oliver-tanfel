@@ -10,7 +10,8 @@ public class DataParser {
 
     public List<Course> parse(List<String> lines) {
         return IntStream.iterate(0, i -> i + 4).limit(lines.size() / 4)
-                .mapToObj(i -> createCourse(lines.subList(i, i + 4)))
+                .mapToObj(i -> lines.subList(i, i + 4))
+                .map(this::createCourse)
                 .collect(Collectors.toList());
     }
 
